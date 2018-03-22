@@ -1,0 +1,32 @@
+<!-- This page is a basic setup to recieve inputs from employees when clocking in and out. Created by Tricia Lynette Roberts, 2018 -->
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="This website is for CodeLou students to sign in/out of class digitally.">
+       <!-- <link rel="icon" type="image/png" href=".ico"> -->
+        <link rel="stylesheet" href="necolasNormalize.css">
+        <link rel="stylesheet" href="main.css"> 
+        <title>CodeLou Sign In/Out</title>
+        
+    </head>
+    <body>
+        <div class="centered">
+            <h1>University of Coders</h1>
+            <form>
+                <legend>YOUR ID NUMBER</legend><br>
+                <input class= "numbers" type="text" name="numberID" value="Type your 7 numbers here" maxlength="7" onfocus="this.value=''"><br>
+                <div class="buttons">
+                    <input type="submit" onclick="start()" value="Clock-In">
+                    <input class="secondButton" type="submit" onclick="end()" value="Clock-Out">
+                </div>    
+            </form>
+        </div>
+        <footer>
+            <p>&copy; TLRebel 2018</p>
+        </footer>
+        <script type="text/javascript" src="main.js"></script>
+    </body>
+</html>
