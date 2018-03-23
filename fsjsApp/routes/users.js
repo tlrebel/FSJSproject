@@ -12,7 +12,7 @@ var database = {
 }
 
 router.get('/timestamps', function(req, res, next) {
-  res.send('awehfoiawehf')
+  res.send('whatever')
 });
 
 

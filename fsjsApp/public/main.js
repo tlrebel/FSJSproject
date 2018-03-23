@@ -13,5 +13,5 @@ function start(){
 }
 
 function end(){
-  alert("This works");
+  
 }
