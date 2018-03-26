@@ -4,26 +4,24 @@ const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://admin:password@ds125255.mlab.com:25255/timesheet');
 var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-  console.log('we\'re connected!')
-});
 
-var kittySchema = mongoose.Schema({
-  name: String
-});
-var Kitten = mongoose.model('Kitten', kittySchema);
+//var kittySchema = mongoose.Schema({
+//  name: String
+//});
+//var Kitten = mongoose.model('Kitten', kittySchema);
+//
+//
+//var database = {
+//    thing: 1
+//}
 
-
-var database = {
-    thing: 1
-}
 // GET
 router.get('/timestamps', function(req, res, next) {
   console.log(req.query)
-    res.send('whatever')
+    res.send('received the input')
 });
-//create 
+
+//create or POST
 router.post('/timestamps', function(req, res, next){
    console.log(req.body)
     var timeSchema = mongoose.Schema({

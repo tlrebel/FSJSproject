@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var index = require('./routes/index');
+//var index = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
@@ -44,3 +44,9 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+// Connection
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log('we\'re connected!')
+});
