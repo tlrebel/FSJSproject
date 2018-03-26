@@ -19,14 +19,17 @@
                 <legend>YOUR ID NUMBER</legend><br>
                 <input class= "numbers" type="text" id="numberID" value="Type your 7 numbers here" maxlength="7" onfocus="this.value=''"><br>
                 <div class="buttons">
-                    <input type="submit" onclick="start()" value="Clock-In">
-                    <input class="secondButton" type="submit" onclick="end()" value="Clock-Out">
+                    <input type="button" onclick="start()" value="Clock-In">
+                    <input class="secondButton" type="button" onclick="end()" value="Clock-Out">
                 </div>    
             </form>
+            <div id="timestamps">
+            </div>
         </div>
         <footer>
             <p>&copy; TLRebel 2018</p>
         </footer>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script type="text/javascript" src="main.js"></script>
     </body>
 </html>
