@@ -1,8 +1,11 @@
 var express = require('express');
 var router = express.Router();
-//const mongoose = require('mongoose');
-//mongoose.connect('mongodb://admin:password@ds125255.mlab.com:25255/timesheet');
-//var db = mongoose.connection;
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://admin:password@ds125255.mlab.com:25255/timesheet');
+var db = mongoose.connection;
+
+// Import all models
+require('./routes/model.js');
 
 //var kittySchema = mongoose.Schema({
 //  name: String
@@ -23,10 +26,8 @@ router.get('/timestamps', function(req, res, next) {
 //create or POST
 router.post('/timestamps', function(req, res, next){
    console.log(req.body)
-    var timeSchema = mongoose.Schema({
-        date: Date, userId:Number
-    });
-    var Timestamp = mongoose.model('Timestamp', timeSchema);
+
+//
     var timestamp = new Timestamp({ userId: 5764356 });
     console.log(timestamp.userId); 
     timestamp.save(function (err, timestamp) {
