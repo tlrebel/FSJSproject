@@ -1,4 +1,5 @@
 function start(){
+   //
     clocking()
             
         // To check the input from the user 
