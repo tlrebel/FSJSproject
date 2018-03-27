@@ -1,9 +1,8 @@
 var express = require('express');
 var router = express.Router();
-const mongoose = require('mongoose');
-
-mongoose.connect('mongodb://admin:password@ds125255.mlab.com:25255/timesheet');
-var db = mongoose.connection;
+//const mongoose = require('mongoose');
+//mongoose.connect('mongodb://admin:password@ds125255.mlab.com:25255/timesheet');
+//var db = mongoose.connection;
 
 //var kittySchema = mongoose.Schema({
 //  name: String
