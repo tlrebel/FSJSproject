@@ -4,7 +4,10 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
+mongoose.connect('mongodb://admin:password@ds125255.mlab.com:25255/timesheet');
+var db = mongoose.connection;
 var users = require('./routes/users');
 
 var app = express();
