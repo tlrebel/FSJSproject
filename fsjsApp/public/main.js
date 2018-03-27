@@ -2,7 +2,15 @@ function start(){
    //
     clocking()
             
-        // To check the input from the user 
+      
+}
+
+function end(){
+  clocking()
+}
+
+function clocking() {
+      // To check the input from the user 
         var numbersUser = /^[0-9]+$/;
         var userInput = document.getElementById("numberID").value;
     
@@ -28,12 +36,4 @@ function start(){
             }
             $.ajax("/users/timestamps", ajaxSettings)      
         }       
-}
-
-function end(){
-  clocking()
-}
-
-function clocking() {
-    
 }
