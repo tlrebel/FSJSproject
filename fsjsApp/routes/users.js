@@ -5,7 +5,7 @@ mongoose.connect('mongodb://admin:password@ds125255.mlab.com:25255/timesheet');
 var db = mongoose.connection;
 
 // Import all models
-require('./routes/model.js');
+var TimeStamp = require('./model.js');
 
 //var kittySchema = mongoose.Schema({
 //  name: String

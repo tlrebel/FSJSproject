@@ -1,4 +1,5 @@
-  var timeSchema = mongoose.Schema({
+const mongoose = require('mongoose');  
+var timeSchema = mongoose.Schema({
         date: Date, 
         userId:Number
     });
