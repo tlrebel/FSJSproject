@@ -1,15 +1,5 @@
-function start(){
-   //
-    clocking()
-            
-      
-}
-
-function end(){
-  clocking()
-}
-
 function clocking() {
+    
       // To check the input from the user 
         var numbersUser = /^[0-9]+$/;
         var userInput = document.getElementById("numberID").value;
@@ -24,8 +14,8 @@ function clocking() {
         var thisDay = (currentDate.getMonth()+ 1) + '-' + currentDate.getDate() + '-' + currentDate.getFullYear();
         var currentTime = currentDate.getHours() + ':' + currentDate.getMinutes() + ':' + currentDate.getSeconds();
         var punchTime = thisDay + ' ' + currentTime;
-                
-            //
+                $("#timestamps").text(punchTime);
+            // Sending the userInput to the backend.
              const ajaxSettings = {
                 data: {number: userInput},
                 method: 'POST',
@@ -35,5 +25,25 @@ function clocking() {
                 }
             }
             $.ajax("/users/timestamps", ajaxSettings)      
-        }       
+        }  
+    alert("clockCheck = " +clockCheck);
 }
+var clockCheck = false;
+
+function start(){
+   //TODO validate the user number is correct before setting the clockCheck
+    clockCheck= true;
+    //
+    clocking()
+   
+            
+      
+}
+
+function end(){
+    //TODO validate the user number is correct before setting the clockCheck
+    clockCheck = false;
+  clocking()
+    
+}
+
