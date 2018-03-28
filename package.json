@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node fsjsApp/bin/www"
+    "start": "nodemon fsjsApp/bin/www"
   },
     
   "dependencies": {

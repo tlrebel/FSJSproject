@@ -1,5 +1,5 @@
 function clocking() {
-    
+    //TODO refresh the page after the user click ok when they see their number and timestamp on page.
       // To check the input from the user 
         var numbersUser = /^[0-9]+$/;
         var userInput = document.getElementById("numberID").value;
