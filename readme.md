@@ -1,6 +1,7 @@
-# Code of Louisville Punch In/Out
+# University of Coders Punch In/Out
+## Tricia Lynette Roberts Full Stack JavaScript Project
 
-The purpose of this program is to record the user numbers used as well as the time the buttons are being pressed to help track the hours. This is to help me grasp the concept of how backend works. I had hoped to give this to Code of Louisville program to use if they desired instead of paper sign in. You can see where I got inspired from. 
+The purpose of this program is to record the user numbers used as well as the time the buttons are being pressed to help track the hours. This is to help me grasp the concept of how backend works. I had hoped to give this to Code of Louisville program to use if they desired instead of paper sign in/out. You can see where I got inspiration from. 
 
 To run this code, you will need:
 
