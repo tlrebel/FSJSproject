@@ -14,7 +14,8 @@ function clocking() {
         var thisDay = (currentDate.getMonth()+ 1) + '-' + currentDate.getDate() + '-' + currentDate.getFullYear();
         var currentTime = currentDate.getHours() + ':' + currentDate.getMinutes() + ':' + currentDate.getSeconds();
         var punchTime = thisDay + ' ' + currentTime;
-                $("#timestamps").text(punchTime);
+               
+            $("#timestamps").text(punchTime);
             // Sending the userInput to the backend.
              const ajaxSettings = {
                 data: {number: userInput},
@@ -26,7 +27,7 @@ function clocking() {
             }
             $.ajax("/users/timestamps", ajaxSettings)      
         }  
-    alert("clockCheck = " +clockCheck);
+    console.log("clockCheck = " +clockCheck);
 }
 var clockCheck = false;
 
