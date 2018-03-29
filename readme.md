@@ -9,7 +9,7 @@ To run this code, you will need:
 
 1. Install (https://github.com/tlrebel/FSJSproject.git) to your device.
 2. Install MongoDB, NodeJS, NPM--> If not have those already on your device.
-3. In the console window such as gitbash, type **npm **start and enter
+3. In the console window such as gitbash, type **npm start** and enter
 4.
 
 Go to port 3000 or localhost:3000
