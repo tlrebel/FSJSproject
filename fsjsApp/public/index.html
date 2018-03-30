@@ -25,11 +25,27 @@
             </form>
             <div id="timestamps">
             </div>
+            
+            <!-- template to show Update and Delete in part of CRUD operation -->
+            <script id="punch-template" type="text/x-handlebars-template">
+      <ul class="user-timestamp">
+        {{#each files}}
+        <li class="moreDetails">
+          <strong>{{userId}}</strong> - {{date}}
+          <span class="below">
+            <button type="button" class="edit" onclick="editButton('{{_id}}')">Edit</button>
+            <button type="button" class="delete" onclick="deleteButton('{{_id}}')">Delete</button>
+          </span>
+        </li>
+        {{/each}}
+      </ul>
+    </script>
         </div>
         <footer>
             <p>&copy; TLRebel 2018</p>
         </footer>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.js"></script>
         <script type="text/javascript" src="main.js"></script>
     </body>
 </html>

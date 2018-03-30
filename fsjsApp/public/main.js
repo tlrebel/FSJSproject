@@ -1,6 +1,76 @@
+function getTimestamp() {
+  return $.ajax('/users/timestamps')
+    .then(res => {
+      console.log("Results from getTimestamp()", res);
+      return res;
+    })
+    .fail(err => {
+      console.error("Error in getTimestamp()", err);
+      throw err;
+    });
+}
+function setPunchCard(data) {
+  data = data || {};
+
+  const card = {
+    title: data.title || '',
+    description: data.description || '',
+    _id: data._id || '',
+  };
+
+  $('#numberID').val(card.title);
+  $('#file-id').val(card._id);
+}
+
+function refreshPunchList() {
+  const templatePunch = $('#punch-template').html();
+  const compiledTemplate = Handlebars.compile(templatePunch);
+
+  getTimestamp()
+    .then(files => {
+
+      window.clockList = files;
+
+      const data = {files: files};
+      const html = compiledTemplate(data);
+      $('#timestamps').html(html);
+    })
+}
+
+  function editButton(id) {
+  const clockTime = window.clockList.find(clockTime => clockTime._id === id);
+  if (clockTime) {
+    setPunchCard(clockTime);
+    clocking()
+  }
+}
+
+function deleteButton(id) {
+  if (confirm("This will be deleted. Okay?")) {
+    deleteClock(id);
+  }
+}
+
+function deleteClock(id) {
+  $.ajax({
+    type: 'DELETE',
+    url: '/api/file/' + id,
+    dataType: 'json',
+    contentType : 'application/json',
+  })
+    .done(function(response) {
+      console.log("User and Date", id, "is Deleted.");
+      refreshPunchList();
+    })
+    .fail(function(error) {
+      console.log("Unable to delete", error);
+    })
+}
+
 function clocking() {
     //TODO refresh the page after the user click ok when they see their number and timestamp on page.
-      // To check the input from the user 
+     
+    // To check the input from the user 
         var numbersUser = /^[0-9]+$/;
         var userInput = document.getElementById("numberID").value;
     
@@ -14,9 +84,10 @@ function clocking() {
         var thisDay = (currentDate.getMonth()+ 1) + '-' + currentDate.getDate() + '-' + currentDate.getFullYear();
         var currentTime = currentDate.getHours() + ':' + currentDate.getMinutes() + ':' + currentDate.getSeconds();
         var punchTime = thisDay + ' ' + currentTime;
-               
+          
+            // To display the date on website
             $("#timestamps").text(punchTime);
-            // Sending the userInput to the backend.
+            // Sending the date and userInput to the backend.
              const ajaxSettings = {
                 data: {number: userInput},
                 method: 'POST',
@@ -27,24 +98,40 @@ function clocking() {
             }
             $.ajax("/users/timestamps", ajaxSettings)      
         }  
-    console.log("clockCheck = " +clockCheck);
+    //console.log("clockCheck = " + clockCheck);
 }
-var clockCheck = false;
+
+// To place/show Edit and Delete to meet the requirement of (C.R.)U.D.--the last two parts.
+function displayList() {
+  const templateCard = $('#punch-template').html();
+  const compiledTemplate = Handlebars.compile(templateCard);
+  getTimestamp()
+  clocking()
+    .then(files => {
+
+      window.fileList = files;
+
+      const clockData = {files: files};
+      const html = compiledTemplate(clockData);
+      console.log(html);
+      $('#timestamp').html(html);
+    })
+}
+
+//var clockCheck = false;
 
 function start(){
    //TODO validate the user number is correct before setting the clockCheck
-    clockCheck= true;
+    //clockCheck= true;
     //
-    clocking()
-   
-            
-      
+    clocking()     
 }
 
 function end(){
     //TODO validate the user number is correct before setting the clockCheck
-    clockCheck = false;
+  //  clockCheck = false;
   clocking()
     
 }
 
+refreshPunchList();

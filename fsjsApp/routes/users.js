@@ -5,12 +5,27 @@ const mongoose = require('mongoose');
 // Import all models
 var TimeStamp = require('./model.js');
 
-// GET
+// GET all files in DB
 router.get('/timestamps', function(req, res, next) {
-    console.log(req.query)
-    res.send('received the input.')
- //   var user = db.collection('').find().toArray(function(err, results){
-//   console.log() })
+    const timeDate = mongoose.model('Timestamp');
+    timeDate.find(function(err, timestamps){
+        if(err){
+            console.log(err);
+            return res.status(500).json(err);
+        }
+        res.json(timestamps);
+        console.log(req.query)
+    });
+});
+
+// GET one file via id as a url param
+router.get('/timestamps/:timestampsId', function(req, res, next){
+    const {timestampsId} = req.params;
+    const timeId = mongoose.model('Timestamp');
+    if (!timeId){
+        return res.status(404).end('Could not find the timestamp `${timeId}`');
+    }
+    res.json(file);
 });
 
 //create or POST
@@ -19,31 +34,70 @@ router.post('/timestamps', function(req, res, next){
     try
     {
     // this relates to schema---look in routes/model.js
-        var timestamp = mongoose.model('Timestamp');
+        const timestamp = mongoose.model('Timestamp');
         const timestampData = {
-              userId: 5764356 
+              userId: req.body.number,
+                date: new Date()
         };
          
         timestamp.create(timestampData, function(err, newTimestamp) {
             if (err) return console.error(err);
+            res.json(newTimestamp);
         });
-        res.send('Created the new input.');
+     
     }
     catch(ex)
     {
         console.log(ex)
     }
 });
-// PUT-- Do I need to add additional after /timestamps?
 
-router.put('/timestamps', function(req, res, next){
-res.send('Making changes to the input' '$req.params.')    
+// PUT-- update timestamp data
+router.put('/timestamps:timestampsId', function(req, res, next){
+    const timestamp = mongoose.model('Timestamp');
+    const timeId = req.params.timeId;
+    
+    timestamp.findbyId(timeId, function(err, ts){
+        if(err){
+            console.error(err);
+            return res.status(500).json(err);
+        }
+        if (!ts) {
+            return res.status(404).json({message: 'Date not found'});
+        }
+        ts.date = req.body.date;
+        ts.userId = req.body.userId;
+        
+        ts.save(function(err, savedts){
+            if (err) {
+                console.error(err);
+                return res.status(500).json(err);
+            }
+            res.json(savedts);
+        })
+    })  
 });
 
-// DELETE
-router.delete('/timestamps', function(req, res, next){
-res.send('Deleting the input' '$req.params.')
-
+// DELETE the time data
+router.delete('/timestamps/:timestampsId', function(req, res, next){
+    const timestamp = mongoose.model('timestamp');
+    const timeId = req.params.timeId;
+    
+    timestamp.findById(timeId, function(err, ts){
+        if (err){
+            console.log(err);
+            return res.status(500).json(err);
+        }
+        if (!ts){
+            return res.status(404).json({
+                message: 'date not found'
+            });
+        }
+        ts.remove(function(err, ts){
+            res.json('deleted');
+           
+})
+    })
 });
 
 router.get('/')
