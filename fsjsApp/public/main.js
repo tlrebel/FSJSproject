@@ -40,8 +40,9 @@ function refreshPunchList() {
   function editButton(id) {
   const clockTime = window.clockList.find(clockTime => clockTime._id === id);
   if (clockTime) {
-    setPunchCard(clockTime);
     clocking()
+      setPunchCard(clockTime);
+    
   }
 }
 
@@ -54,7 +55,7 @@ function deleteButton(id) {
 function deleteClock(id) {
   $.ajax({
     type: 'DELETE',
-    url: '/api/file/' + id,
+    url: '/users/timestamps' + id,
     dataType: 'json',
     contentType : 'application/json',
   })
@@ -98,15 +99,14 @@ function clocking() {
             }
             $.ajax("/users/timestamps", ajaxSettings)      
         }  
-    //console.log("clockCheck = " + clockCheck);
 }
 
 // To place/show Edit and Delete to meet the requirement of (C.R.)U.D.--the last two parts.
 function displayList() {
   const templateCard = $('#punch-template').html();
   const compiledTemplate = Handlebars.compile(templateCard);
-  getTimestamp()
-  clocking()
+    clocking()
+    getTimestamp()
     .then(files => {
 
       window.fileList = files;
@@ -118,18 +118,11 @@ function displayList() {
     })
 }
 
-//var clockCheck = false;
-
 function start(){
-   //TODO validate the user number is correct before setting the clockCheck
-    //clockCheck= true;
-    //
     clocking()     
 }
 
 function end(){
-    //TODO validate the user number is correct before setting the clockCheck
-  //  clockCheck = false;
   clocking()
     
 }
