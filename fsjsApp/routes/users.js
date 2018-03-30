@@ -78,26 +78,31 @@ router.put('/timestamps:timestampsId', function(req, res, next){
     })  
 });
 
+
 // DELETE the time data
-router.delete('/timestamps/:timestampsId', function(req, res, next){
-    const timestamp = mongoose.model('timestamp');
-    const timeId = req.params.timeId;
-    
-    timestamp.findById(timeId, function(err, ts){
-        if (err){
-            console.log(err);
-            return res.status(500).json(err);
-        }
-        if (!ts){
-            return res.status(404).json({
-                message: 'date not found'
-            });
-        }
-        ts.remove(function(err, ts){
-            res.json('deleted');
-           
-})
-    })
+router.delete('/timestamps/:timeId', function(req, res, next){
+    try{
+        const timestamp = mongoose.model('Timestamp');
+        const timeId = req.params.timeId;
+          console.log(req.params);
+        timestamp.findById(timeId, function(err, ts){
+            if (err){
+                console.log(err);
+                return res.status(500).json(err);
+            }
+            if (!ts){
+                return res.status(404).json({
+                    message: 'date not found'
+                });
+            }
+            ts.remove(function(err, ts){
+                res.json('deleted');
+               
+            })
+        })
+    } catch(e) {
+        console.error(e);
+    }
 });
 
 router.get('/')

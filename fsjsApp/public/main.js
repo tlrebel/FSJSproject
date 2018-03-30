@@ -40,7 +40,7 @@ function refreshPunchList() {
   function editButton(id) {
   const clockTime = window.clockList.find(clockTime => clockTime._id === id);
   if (clockTime) {
-    clocking()
+   // clocking()
       setPunchCard(clockTime);
     
   }
@@ -55,7 +55,7 @@ function deleteButton(id) {
 function deleteClock(id) {
   $.ajax({
     type: 'DELETE',
-    url: '/users/timestamps' + id,
+    url: '/users/timestamps/' + id,
     dataType: 'json',
     contentType : 'application/json',
   })
