@@ -60,7 +60,7 @@ function deleteClock(id) {
     contentType : 'application/json',
   })
     .done(function(response) {
-      console.log("User and Date", id, "is Deleted.");
+      console.log("The data", id, "is Deleted.");
       refreshPunchList();
     })
     .fail(function(error) {
@@ -87,7 +87,7 @@ function clocking() {
         var punchTime = thisDay + ' ' + currentTime;
           
             // To display the date on website
-            $("#timestamps").text(punchTime);
+            $("#timestampsAbove").text(punchTime);
             // Sending the date and userInput to the backend.
              const ajaxSettings = {
                 data: {number: userInput},

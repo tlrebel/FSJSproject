@@ -9,6 +9,11 @@ To run this code, you will need:
 
 1. Install (https://github.com/tlrebel/FSJSproject.git) to your device.
 2. Install MongoDB, NodeJS, NPM--> If not have those already on your device.
-3. In the console window such as gitbash, type **npm start** and enter.
-4. In the browser of your choice, type **localhost:3000** in url bar and enter.
+3. In the console window such as gitbash, go to root directory of the project: FSJSprojct
+4. Type **npm install* to install or update packages if not already have done so.
+5. Type **npm start** and enter.
+6. In the browser of your choice, type **localhost:3000** in url bar and enter.
+
+#### Extra Note:
+The data is stored on mLab.com
 
