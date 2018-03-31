@@ -24,8 +24,8 @@ function setPunchCard(data) {
 function refreshPunchList() {
   const templatePunch = $('#punch-template').html();
   const compiledTemplate = Handlebars.compile(templatePunch);
-
-  getTimestamp()
+  
+    getTimestamp()
     .then(files => {
 
       window.clockList = files;
@@ -38,7 +38,7 @@ function refreshPunchList() {
 
   function editButton(id) {
   const clockTime = window.clockList.find(clockTime => clockTime._id === id);
-  //window.clockList =
+  window.clockList = clockTime;
       if (clockTime) {
     setPunchCard(clockTime);
          
