@@ -79,7 +79,7 @@ router.put('/timestamps/:timeId', function(req, res, next){
 });
 
 
-// DELETE the time data
+// DELETE the data
 router.delete('/timestamps/:timeId', function(req, res, next){
     try{
         const timestamp = mongoose.model('Timestamp');

@@ -17,16 +17,21 @@
             <h1>University of Coders</h1>
             <form>
                 <legend>YOUR ID NUMBER</legend><br>
-                <input class= "numbers" type="text" id="numberID" maxlength="4"><br>
+                
+                <!-- For the user to type in 4 numbers with buttons to clock in/out -->
+                <input class= "numbers" type="text" id="numberID" maxlength="4" value="Type your 4 numbers here" onfocus= "userBox()">
+                <br>
                 <div class="buttons">
                     <input type="button" onclick="start()" value="Clock-In">
                     <input class="secondButton" type="button" onclick="end()" value="Clock-Out">
                 </div>    
             </form>
-            <div id="timestampsAbove"></div>
+            <!--  -->
+<!--            <div id="timestampsAbove"></div>-->
             <div id="timestamps">
             <input type="hidden" id="data-id" value="" />
             </div>
+            
             <!-- template to show Update and Delete in part of CRUD operation -->
             <script id="punch-template" type="text/x-handlebars-template">
       <ul class="user-timestamp">
