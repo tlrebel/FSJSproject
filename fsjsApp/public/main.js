@@ -112,7 +112,7 @@ function clocking(type) {
                 }
     $.ajax(url, ajaxSettings)      
   }
-  refreshPunchList();  
+ // refreshPunchList();  
 }
 function userBox() {
     var data = $('#data-id').val();
@@ -149,4 +149,4 @@ function end(){
 }   
 
 //uncomment the line below if wanting to show data from the beginning instead of after submitting the data.
-//refreshPunchList();
+refreshPunchList();
