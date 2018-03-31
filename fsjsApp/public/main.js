@@ -40,14 +40,13 @@ function refreshPunchList() {
   function editButton(id) {
   const clockTime = window.clockList.find(clockTime => clockTime._id === id);
   if (clockTime) {
-   // clocking()
-      setPunchCard(clockTime);
-    
+    setPunchCard(clockTime);
+         
   }
 }
 
 function deleteButton(id) {
-  if (confirm("This will be deleted. Okay?")) {
+  if (confirm("Are you sure you want to delete this? If so, press OK.")) {
     deleteClock(id);
   }
 }
@@ -101,7 +100,7 @@ function clocking() {
         }  
 }
 
-// To place/show Edit and Delete to meet the requirement of (C.R.)U.D.--the last two parts.
+// To place/show Edit and Delete buttons.
 function displayList() {
   const templateCard = $('#punch-template').html();
   const compiledTemplate = Handlebars.compile(templateCard);

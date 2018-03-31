@@ -19,7 +19,7 @@ router.get('/timestamps', function(req, res, next) {
 });
 
 // GET one file via id as a url param
-router.get('/timestamps/:timestampsId', function(req, res, next){
+router.get('/timestamps/:timeId', function(req, res, next){
     const {timestampsId} = req.params;
     const timeId = mongoose.model('Timestamp');
     if (!timeId){
@@ -53,7 +53,7 @@ router.post('/timestamps', function(req, res, next){
 });
 
 // PUT-- update timestamp data
-router.put('/timestamps:timestampsId', function(req, res, next){
+router.put('/timestamps:timeId', function(req, res, next){
     const timestamp = mongoose.model('Timestamp');
     const timeId = req.params.timeId;
     
