@@ -54,9 +54,11 @@ router.post('/timestamps', function(req, res, next){
 
 // PUT-- update timestamp data
 router.put('/timestamps/:timeId', function(req, res, next){
+   try{
+       
     const timestamp = mongoose.model('Timestamp');
     const timeId = req.params.timeId;
-    
+    console.log(req.params);
     timestamp.findbyId(timeId, function(err, ts){
         if(err){
             console.error(err);
@@ -75,7 +77,10 @@ router.put('/timestamps/:timeId', function(req, res, next){
             }
             res.json(savedts);
         })
-    })  
+    }) 
+   }catch (e) {
+console.error(e);
+}
 });
 
 

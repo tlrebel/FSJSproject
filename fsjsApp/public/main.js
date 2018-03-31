@@ -112,6 +112,7 @@ function clocking(type) {
                 }
     $.ajax(url, ajaxSettings)      
   }
+    //uncomment the line below if want to switch out the call from the bottom
  // refreshPunchList();  
 }
 function userBox() {
