@@ -37,7 +37,8 @@ router.post('/timestamps', function(req, res, next){
         const timestamp = mongoose.model('Timestamp');
         const timestampData = {
               userId: req.body.number,
-                date: new Date()
+              date: new Date(),
+              type: req.body.type
         };
          
         timestamp.create(timestampData, function(err, newTimestamp) {
@@ -55,22 +56,23 @@ router.post('/timestamps', function(req, res, next){
 // PUT-- update timestamp data
 router.put('/timestamps/:timeId', function(req, res, next){
    try{
-       
     const timestamp = mongoose.model('Timestamp');
     const timeId = req.params.timeId;
     console.log(req.params);
-    timestamp.findbyId(timeId, function(err, ts){
+    timestamp.findById(timeId, function(err, ts){
         if(err){
             console.error(err);
             return res.status(500).json(err);
         }
         if (!ts) {
-            return res.status(404).json({message: 'Date not found'});
+            return res.status(404).json({message: 'Data not found'});
         }
-        ts.date = req.body.date;
+        console.log(req.body, ts);
+        ts.type = req.body.type;
         ts.userId = req.body.userId;
         
         ts.save(function(err, savedts){
+            
             if (err) {
                 console.error(err);
                 return res.status(500).json(err);
@@ -79,8 +81,8 @@ router.put('/timestamps/:timeId', function(req, res, next){
         })
     }) 
    }catch (e) {
-console.error(e);
-}
+       console.error(e);
+   }
 });
 
 

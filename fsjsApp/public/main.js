@@ -101,8 +101,9 @@ function clocking(type) {
                 }
                 const ajaxSettings = {
                 data: {
-                    number: userInput,
-                    type: type
+                    userId: userInput,
+                    type: type,
+                    
                 },
                 method: method,
                 //url: url,
@@ -112,8 +113,7 @@ function clocking(type) {
                 }
     $.ajax(url, ajaxSettings)      
   }
-    //uncomment the line below if want to switch out the call from the bottom
- // refreshPunchList();  
+  refreshPunchList();  
 }
 function userBox() {
     var data = $('#data-id').val();
@@ -138,16 +138,16 @@ function displayList() {
     })
 }
 
-// Clock In button to start the whole thing
+// Clock In button 
 function start(){
-    clocking('clock-in');     
+    clocking('clock-in');   
+    refreshPunchList();
 }
 
-// To make it look pretty.
+// Clock Out button
 function end(){
-    //clocking('clock-out');
-    alert("This feature is not yet implicated. Coming far away from you.");
+    clocking('clock-out');
+    refreshPunchList();
+    //alert("This feature is not yet implicated. Coming far away from you.");
 }   
-
-//uncomment the line below if wanting to show data from the beginning instead of after submitting the data.
 refreshPunchList();
