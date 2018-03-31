@@ -11,15 +11,14 @@ function getTimestamp() {
 }
 function setPunchCard(data) {
   data = data || {};
-
   const card = {
-    title: data.title || '',
-    description: data.description || '',
+    date: data.date || '',
+    userId: data.userId || '',
     _id: data._id || '',
   };
 
-  $('#numberID').val(card.title);
-  $('#file-id').val(card._id);
+  $('#numberID').val(card.userId);
+  $('#data-id').val(card._id);
 }
 
 function refreshPunchList() {
@@ -39,7 +38,8 @@ function refreshPunchList() {
 
   function editButton(id) {
   const clockTime = window.clockList.find(clockTime => clockTime._id === id);
-  if (clockTime) {
+  //window.clockList =
+      if (clockTime) {
     setPunchCard(clockTime);
          
   }
@@ -68,15 +68,14 @@ function deleteClock(id) {
 }
 
 function clocking() {
-    //TODO refresh the page after the user click ok when they see their number and timestamp on page.
      
     // To check the input from the user 
         var numbersUser = /^[0-9]+$/;
         var userInput = document.getElementById("numberID").value;
     
             // Validation that the length and input of being numbers only are correct.
-            if (isNaN(userInput) || userInput.length < 7) {
-                alert("Please type only 7 numbers.");
+            if (isNaN(userInput) || userInput.length < 4) {
+                alert("Please type only 4 numbers.");
             } else {
                 
         // Setting the date of the time the button is clicked.
@@ -86,7 +85,8 @@ function clocking() {
         var punchTime = thisDay + ' ' + currentTime;
           
             // To display the date on website
-            $("#timestampsAbove").text(punchTime);
+                alert("Your number is " + userInput + " and date of " + punchTime);
+           // $("#timestampsAbove").text(punchTime);
             // Sending the date and userInput to the backend.
              const ajaxSettings = {
                 data: {number: userInput},

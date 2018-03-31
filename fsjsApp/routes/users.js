@@ -53,7 +53,7 @@ router.post('/timestamps', function(req, res, next){
 });
 
 // PUT-- update timestamp data
-router.put('/timestamps:timeId', function(req, res, next){
+router.put('/timestamps/:timeId', function(req, res, next){
     const timestamp = mongoose.model('Timestamp');
     const timeId = req.params.timeId;
     
