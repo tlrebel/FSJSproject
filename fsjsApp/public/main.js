@@ -71,11 +71,14 @@ function deleteClock(id) {
   })
 }
 
-function clocking() {
+function clocking(type) {
     
     // To check the input from the user 
     var numbersUser = /^[0-9]+$/;
+    
+    // To get the values from the inputs
     var userInput = document.getElementById("numberID").value;
+    var userData = document.getElementById("data-id").value;
     
         // Validation that the length and input of being numbers only are correct.
         if (isNaN(userInput) || userInput.length < 4) {
@@ -90,25 +93,27 @@ function clocking() {
                 alert("Your number is " + userInput + " and date of " + punchTime);
                                        
                 // Sending the date and userInput to the backend.
-                const ajaxSettings = {
-                data: {number: userInput},
-                method: 'POST',
-                success: function (data, textStatus, jqXHR) {
-                console.log(data, textStatus, jqXHR)
+                var method = 'POST';
+                var url = '/users/timestamps/';
+                if(userData) {
+                    method = 'PUT';
+                    url = '/users/timestamps/' + userData;
                 }
-                $.ajax("/users/timestamps/", ajaxSettings)      
-            } 
-        
-        if (fileData._id) {
-            method = 'PUT';
-            url = '/users/timestamps/' + fileData._id;
-            } else {
-                method = 'POST';
-                url = '/users/timestamps/';
-            }   
-        }
+                const ajaxSettings = {
+                data: {
+                    number: userInput, 
+                    type: type
+                },
+                method: method,
+                url: url,
+                success: function (data, textStatus, jqXHR) {
+                    console.log(data, textStatus, jqXHR)
+                    }
+                }
+    //$.ajax("/users/timestamps", ajaxSettings)      
+  }
+  refreshPunchList();  
 }
-
 function userBox() {
     var data = $('#data-id').val();
     if(data == '')
@@ -134,14 +139,14 @@ function displayList() {
 
 // Clock In button to start the whole thing
 function start(){
-    clocking()     
+    clocking('clock-in');     
 }
 
 // To make it look pretty.
 function end(){
-  alert("This feature is not yet implicated. Coming far away from you.");
-    
-}
+    //clocking('clock-out');
+    alert("This feature is not yet implicated. Coming far away from you.");
+}   
 
 //uncomment the line below if wanting to show data from the beginning instead of after submitting the data.
 //refreshPunchList();
