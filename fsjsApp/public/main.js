@@ -101,16 +101,16 @@ function clocking(type) {
                 }
                 const ajaxSettings = {
                 data: {
-                    number: userInput, 
+                    number: userInput,
                     type: type
                 },
                 method: method,
-                url: url,
+                //url: url,
                 success: function (data, textStatus, jqXHR) {
                     console.log(data, textStatus, jqXHR)
                     }
                 }
-    //$.ajax("/users/timestamps", ajaxSettings)      
+    $.ajax(url, ajaxSettings)      
   }
   refreshPunchList();  
 }
