@@ -22,3 +22,4 @@ What to expect from this website:
 
 #### Extra Note:
 The data is stored on mLab.com
+For the MEAN stack requirement, I used MongoDB, Express, Ajax/JavaScript/Jquery, and Node.
