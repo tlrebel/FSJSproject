@@ -14,6 +14,11 @@ To run this code, you will need:
 5. Type **npm start** and enter.
 6. In the browser of your choice, type **localhost:3000** in url bar and enter.
 
+What to expect from this website:
+
+⋅⋅* Be able to type the numbers in the field and press clock in or out. Data will be added.
+⋅⋅* Be able to delete data.
+⋅⋅* Be able to edit the numbers and be able to change the clock in or clock out. The data will be updated after pressing either clock in or clock out.
+
 #### Extra Note:
 The data is stored on mLab.com
-

@@ -39,13 +39,11 @@ router.post('/timestamps', function(req, res, next){
               userId: req.body.number,
               date: new Date(),
               type: req.body.type
-        };
-         
+        }; 
         timestamp.create(timestampData, function(err, newTimestamp) {
             if (err) return console.error(err);
             res.json(newTimestamp);
         });
-     
     }
     catch(ex)
     {
@@ -69,10 +67,8 @@ router.put('/timestamps/:timeId', function(req, res, next){
         }
         console.log(req.body, ts);
         ts.type = req.body.type;
-        ts.userId = req.body.userId;
-        
+        ts.userId = req.body.number;
         ts.save(function(err, savedts){
-            
             if (err) {
                 console.error(err);
                 return res.status(500).json(err);
@@ -84,7 +80,6 @@ router.put('/timestamps/:timeId', function(req, res, next){
        console.error(e);
    }
 });
-
 
 // DELETE the data
 router.delete('/timestamps/:timeId', function(req, res, next){
@@ -104,7 +99,6 @@ router.delete('/timestamps/:timeId', function(req, res, next){
             }
             ts.remove(function(err, ts){
                 res.json('deleted');
-               
             })
         })
     } catch(e) {
@@ -113,5 +107,4 @@ router.delete('/timestamps/:timeId', function(req, res, next){
 });
 
 router.get('/')
-
 module.exports = router;

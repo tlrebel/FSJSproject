@@ -32,7 +32,6 @@ function refreshPunchList() {
   getTimestamp()
   .then(files => {
       window.clockList = files;
-
       const data = {files: files};
       const html = compiledTemplate(data);
       $('#timestamps').html(html);
@@ -54,7 +53,7 @@ function deleteButton(id) {
   }
 }
 
-// Deleting data
+// Deleting the data
 function deleteClock(id) {
   $.ajax({
       type: 'DELETE',
@@ -71,6 +70,7 @@ function deleteClock(id) {
   })
 }
 
+// Big stuff happens here.
 function clocking(type) {
     
     // To check the input from the user 
@@ -92,7 +92,7 @@ function clocking(type) {
                 var punchTime = thisDay + ' ' + currentTime;
                 alert("Your number is " + userInput + " and date of " + punchTime);
                                        
-                // Sending the date and userInput to the backend.
+                // Sending the date and userInput to the backend when created or update.
                 var method = 'POST';
                 var url = '/users/timestamps/';
                 if(userData) {
@@ -101,20 +101,20 @@ function clocking(type) {
                 }
                 const ajaxSettings = {
                 data: {
-                    userId: userInput,
+                    number: userInput,
                     type: type,
-                    
                 },
                 method: method,
-                //url: url,
                 success: function (data, textStatus, jqXHR) {
                     console.log(data, textStatus, jqXHR)
+                    refreshPunchList(); 
                     }
                 }
     $.ajax(url, ajaxSettings)      
-  }
-  refreshPunchList();  
+  } 
 }
+
+// This is where editing happens in the input.
 function userBox() {
     var data = $('#data-id').val();
     if(data == '')
@@ -140,14 +140,11 @@ function displayList() {
 
 // Clock In button 
 function start(){
-    clocking('clock-in');   
-    refreshPunchList();
+    clocking('clock-in');      
 }
 
 // Clock Out button
 function end(){
-    clocking('clock-out');
-    refreshPunchList();
-    //alert("This feature is not yet implicated. Coming far away from you.");
+    clocking('clock-out'); 
 }   
 refreshPunchList();
